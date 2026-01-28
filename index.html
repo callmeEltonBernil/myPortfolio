@@ -6,6 +6,27 @@
     <title>My Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* Make all project and UX images clickable */
+        .project-image, .ux-project-image img {
+            cursor: pointer;
+        }
+        
+        /* Style for click-to-view text */
+        .click-to-view {
+            display: block;
+            margin-top: 1.2rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .click-to-view:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -37,9 +58,7 @@
                 <div class="hero-content">
                     <div class="hero-text">
                         <h1>Hi, I'm <span class="typing"></span></h1>
-                        <p>A Bachelor of Science in Information Systems Student
-                            at Cebu Technological University - Main Campus
-                        </p>
+                        <p>A Bachelor of Science in Information System student at Cebu Technological University - Main Campus</p>
                         <div class="hero-buttons">
                             <a href="#contact" class="btn primary-btn">Reach me out</a>
                             
@@ -62,8 +81,7 @@
                         <span><i class="fa-brands fa-html5"></i> HTML</span>
                         <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
                         <span><i class="fa-brands fa-js"></i> JavaScript</span>
-                        <span><i class="fa-brands fa-python"></i> Python</span>
-                        <span><i class="fa-brands fa-mysql"></i> MySQL</span>
+                        <span><i class="fa-solid fa-database"></i> MySQL</span>
                         <span><i class="fa-brands fa-figma"></i> Figma</span>
                         
                     </div>
@@ -130,20 +148,31 @@
             <h2>Web Development Projects</h2>
             <div class="project-grid">
                 <div class="project-card">
-                    <img src="capstone-project.png" alt="Project 1">
+                    <img src="capstone-project.png" alt="Smart Food Waste Management System" class="project-image">
+                    <div class="project-badge">Capstone Project</div>
                     <h3>Smart Food Waste Management System</h3>
-                    <p>An IoT-based web application for real-time monitoring and analysis of food waste at CTU Main Campus. Features automated waste measurement, bin monitoring with alerts, data analytics dashboard, and comprehensive reporting to promote sustainable consumption.</p>
-                    <a href="https://smart-bin-app-d9ef0.web.app" class="btn">View Project</a>
+                    <p>An IoT-based web application for real-time monitoring and analysis of food waste at CTU Main Campus. Features automated waste measurement, bin monitoring with alerts, data analytics dashboard, and comprehensive reporting to promote sustainable. An admin panel for managing users, bins, and system settings.</p>
+                    <div class="project-tech-stack">
+                        <span class="tech-tag">IoT</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Arduino</span>
+                    </div>
+                    <div class="project-buttons">
+                        <a href="https://smart-bin-app-d9ef0.web.app" class="btn btn-primary">View Project</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="ux-projects">
-            <h2>UI/UX Design Projects</h2>
+            <h2>Example UI/UX Design Projects</h2>
             <div class="ux-project-grid">
                 <div class="ux-project-card">
                     <div class="ux-project-image">
-                        <img src="porsche luury brand.png" alt="Porsche Brand Design">
+                        <img src="porsche.png" alt="Porsche Brand Design">
                         <div class="ux-overlay">
                             <div class="ux-overlay-content">
                                 <i class="fab fa-figma"></i>
@@ -163,10 +192,7 @@
                             <span class="tag">Branding</span>
                             <span class="tag">Typography</span>
                         </div>
-                        <a href="#" class="ux-btn" target="_blank">
-                            <i class="fab fa-figma"></i>
-                            <span>View on Figma</span>
-                        </a>
+                        <span class="click-to-view">Click to see the photo</span>
                     </div>
                 </div>
 
@@ -192,10 +218,7 @@
                             <span class="tag">Minimalism</span>
                             <span class="tag">3D Rendering</span>
                         </div>
-                        <a href="#" class="ux-btn" target="_blank">
-                            <i class="fab fa-figma"></i>
-                            <span>View on Figma</span>
-                        </a>
+                        <span class="click-to-view">Click to see the photo</span>
                     </div>
                 </div>
 
@@ -221,10 +244,7 @@
                             <span class="tag">3D Design</span>
                             <span class="tag">Color Theory</span>
                         </div>
-                        <a href="#" class="ux-btn" target="_blank">
-                            <i class="fab fa-figma"></i>
-                            <span>View on Figma</span>
-                        </a>
+                        <span class="click-to-view">Click to see the photo</span>
                     </div>
                 </div>
             </div>
@@ -239,16 +259,17 @@
                         <h3>Reach me out</h3>
                         <div class="contact-details">
                             <p class="name">Elton Bernil</p>
-                            <p class="email">bernileltondwiinn@gmail.com</p>
+                            <p class="email">
+                                <i class="fas fa-envelope"></i> bernileltondwiinn@gmail.com
+                            </p>
                         </div>
                     </div>
                     
                     <div class="social-connect">
                         <h3>Connect with me</h3>
                         <div class="social-icons">
-                            <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-                            <a href="" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://www.facebook.com/bernilelton" target="_blank"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.linkedin.com/in/bernil-elton-dwinn-p-3a50903a8/" target="_blank"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
 
@@ -262,38 +283,44 @@
         <p>&copy; 2024 [Elton Bernil]. All rights reserved.</p>
     </footer>
 
+    <!-- Lightbox Modal for Full Image View -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+        <div class="lightbox-nav">
+            <button class="lightbox-prev" id="lightbox-prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="lightbox-next" id="lightbox-next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
     <script>
-        // Select all navigation links
+        // Navigation links
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault(); // Prevent default anchor behavior
-                
-                // Get the target section id from the href
+                e.preventDefault();
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
-                
-                // Get header height for offset
                 const headerHeight = document.querySelector('header').offsetHeight;
-                
-                // Calculate the target position
                 const targetPosition = targetSection.offsetTop - headerHeight;
                 
-                // Smooth scroll to target
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
                 });
                 
-                // Optional: Update URL without jumping
                 history.pushState(null, '', targetId);
             });
         });
 
-        // Optional: Smooth scroll for any element with class 'btn' that has an href starting with #
+        // Smooth scroll for buttons
         document.querySelectorAll('.btn[href^="#"]').forEach(button => {
             button.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 const targetSection = document.querySelector(targetId);
                 const headerHeight = document.querySelector('header').offsetHeight;
@@ -308,14 +335,12 @@
             });
         });
 
-        // Highlight active section in navigation
+        // Highlight active section
         window.addEventListener('scroll', () => {
             let current = '';
             
             document.querySelectorAll('section').forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
                 if (pageYOffset >= sectionTop - 150) {
                     current = section.getAttribute('id');
                 }
@@ -331,52 +356,133 @@
 
         // Typing Animation
         const typingElement = document.querySelector('.typing');
-        const phrases = [
-            "Elton Bernil",
-            "a Web Dev",
-            "a Designer",
-        ];
-        
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        
-        const typingDelay = 100; // Delay between each character typing
-        const deletingDelay = 50; // Delay between each character deletion
-        const newPhraseDelay = 2000; // Delay before starting to type new phrase
+        const phrases = ["Elton Bernil", "a Web Dev", "a Designer"];
+        let phraseIndex = 0, charIndex = 0, isDeleting = false;
         
         function typeText() {
             const currentPhrase = phrases[phraseIndex];
             
             if (isDeleting) {
-                // Remove a character
                 typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
                 charIndex--;
             } else {
-                // Add a character
                 typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
                 charIndex++;
             }
             
-            // Typing speed logic
-            let typeSpeed = isDeleting ? deletingDelay : typingDelay;
+            let typeSpeed = isDeleting ? 50 : 100;
             
-            // If complete phrase is typed
             if (!isDeleting && charIndex === currentPhrase.length) {
-                // Pause at end of phrase
-                typeSpeed = newPhraseDelay;
+                typeSpeed = 2000;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                // Move to next phrase
                 phraseIndex = (phraseIndex + 1) % phrases.length;
             }
             
             setTimeout(typeText, typeSpeed);
         }
         
-        // Start the typing animation when the page loads
         window.addEventListener('load', typeText);
+
+        // ===== LIGHTBOX =====
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const lightboxCaption = document.getElementById('lightbox-caption');
+        const lightboxClose = document.querySelector('.lightbox-close');
+        const lightboxPrev = document.getElementById('lightbox-prev');
+        const lightboxNext = document.getElementById('lightbox-next');
+
+        let currentImageIndex = 0;
+        let imageArray = [];
+
+        // Functions first
+        function openLightbox(index) {
+            currentImageIndex = index;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            updateLightboxImage();
+            setTimeout(() => lightbox.classList.add('active'), 10);
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            setTimeout(() => {
+                lightbox.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
+
+        function updateLightboxImage() {
+            const currentImage = imageArray[currentImageIndex];
+            lightboxImg.src = currentImage.src;
+            lightboxImg.alt = currentImage.alt;
+            lightboxCaption.textContent = currentImage.title;
+
+            lightboxPrev.style.opacity = currentImageIndex === 0 ? '0.5' : '1';
+            lightboxPrev.style.cursor = currentImageIndex === 0 ? 'not-allowed' : 'pointer';
+            lightboxNext.style.opacity = currentImageIndex === imageArray.length - 1 ? '0.5' : '1';
+            lightboxNext.style.cursor = currentImageIndex === imageArray.length - 1 ? 'not-allowed' : 'pointer';
+        }
+
+        function showPrevImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                updateLightboxImage();
+            }
+        }
+
+        function showNextImage() {
+            if (currentImageIndex < imageArray.length - 1) {
+                currentImageIndex++;
+                updateLightboxImage();
+            }
+        }
+
+        // Build image array
+        const uxProjectImages = document.querySelectorAll('.ux-project-image img');
+        const projectImages = document.querySelectorAll('.project-card .project-image');
+
+        uxProjectImages.forEach((img, index) => {
+            imageArray.push({
+                src: img.src,
+                alt: img.alt,
+                title: img.closest('.ux-project-card').querySelector('.ux-project-info h3').textContent
+            });
+
+            img.addEventListener('click', () => openLightbox(index));
+        });
+
+        projectImages.forEach((img, index) => {
+            imageArray.push({
+                src: img.src,
+                alt: img.alt,
+                title: img.alt
+            });
+
+            img.addEventListener('click', () => openLightbox(uxProjectImages.length + index));
+        });
+
+        // Click to view spans
+        document.querySelectorAll('.click-to-view').forEach((span, idx) => {
+            span.addEventListener('click', () => openLightbox(idx));
+        });
+
+        // Controls
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightboxPrev.addEventListener('click', showPrevImage);
+        lightboxNext.addEventListener('click', showNextImage);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                else if (e.key === 'ArrowLeft') showPrevImage();
+                else if (e.key === 'ArrowRight') showNextImage();
+            }
+        });
     </script>
 </body>
 </html>
