@@ -6,19 +6,19 @@
 }
 
 :root {
-    /* Modern Minimalist Color Palette */
-    --primary-color: #6366f1;        /* Soft Indigo - Primary actions */
-    --secondary-color: #0f172a;      /* Slate Dark - Text & headers */
-    --accent-color: #f59e0b;         /* Amber - Highlights & CTAs */
-    --success-color: #10b981;        /* Emerald - Success states */
-    --text-color: #334155;           /* Slate Gray - Body text */
-    --text-light: #64748b;           /* Lighter slate - Secondary text */
-    --light-bg: #f8fafc;             /* Off-white - Background */
+    /* Minimalist Monochromatic Color Palette */
+    --primary-color: #000000;        /* Black - Primary text & headers */
+    --secondary-color: #1a1a1a;      /* Dark gray - Text */
+    --accent-color: #333333;         /* Medium gray - Accents */
+    --success-color: #333333;        /* Gray - Success states */
+    --text-color: #555555;           /* Slate Gray - Body text */
+    --text-light: #888888;           /* Lighter gray - Secondary text */
+    --light-bg: #f5f5f5;             /* Off-white - Background */
     --white: #ffffff;                /* Pure white */
-    --border-color: #e2e8f0;         /* Light border */
-    --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-    --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --border-color: #d0d0d0;         /* Light border */
+    --gradient-1: linear-gradient(135deg, #1a1a1a 0%, #333333 100%);
+    --gradient-2: linear-gradient(135deg, #f8f8f8 0%, #e0e0e0 100%);
+    --gradient-3: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
 }
 
 body {
@@ -36,7 +36,8 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border-color);
 }
 
 nav ul {
@@ -54,12 +55,13 @@ nav ul li {
 nav ul li a {
     text-decoration: none;
     color: var(--secondary-color);
-    font-weight: 500;
-    font-size: 1.1rem;
+    font-weight: 400;
+    font-size: 0.9rem;
     padding: 8px 16px;
     position: relative;
     transition: color 0.3s ease;
     z-index: 1;
+    letter-spacing: 0.3px;
 }
 
 /* New background hover animation */
@@ -69,11 +71,11 @@ nav ul li a {
     left: 0;
     width: 100%;
     height: 0;
-    background: var(--primary-color);
-    opacity: 0.1;
+    background: var(--secondary-color);
+    opacity: 0.05;
     transition: height 0.3s ease;
     z-index: -1;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 /* Hover states */
@@ -88,18 +90,18 @@ nav ul li a:hover .hover-animation {
 /* Active state */
 nav ul li a.active .hover-animation {
     height: 100%;
-    background: var(--primary-color);
-    opacity: 0.15;
+    background: var(--secondary-color);
+    opacity: 0.08;
 }
 
 /* Optional: Add a subtle scale effect */
 nav ul li a {
     transform: scale(1);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 nav ul li a:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 /* Hero section */
@@ -108,7 +110,7 @@ nav ul li a:hover {
     padding: 80px 5% 0;
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, var(--secondary-color) 0%, #1e293b 50%, var(--primary-color) 100%);
+    background: var(--white);
     position: relative;
     overflow: hidden;
 }
@@ -120,8 +122,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 70% 50%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+    background: none;
     pointer-events: none;
 }
 
@@ -143,20 +144,25 @@ nav ul li a:hover {
 .hero-text {
     flex: 1;
     padding: 2rem 0;
-    color: var(--white);
+    color: var(--secondary-color);
     animation: fadeInLeft 1s ease;
 }
 
 .hero-text h1 {
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     margin-bottom: 1rem;
     line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .hero-text p {
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    opacity: 0.8;
+    color: var(--text-color);
+    font-weight: 400;
+    line-height: 1.6;
 }
 
 .hero-buttons {
@@ -165,35 +171,41 @@ nav ul li a:hover {
 }
 
 .primary-btn {
-    background: var(--accent-color);
+    background: var(--secondary-color);
     color: var(--white);
-    padding: 1rem 2rem;
-    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    border-radius: 0;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    box-shadow: none;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .secondary-btn {
     background: transparent;
-    color: var(--white);
-    padding: 1rem 2rem;
-    border-radius: 30px;
+    color: var(--secondary-color);
+    padding: 1rem 2.5rem;
+    border-radius: 0;
     font-weight: 600;
-    border: 2px solid var(--white);
+    border: 2px solid var(--secondary-color);
     transition: all 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .primary-btn:hover {
-    background: #d97706;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
+    background: var(--primary-color);
+    transform: none;
+    box-shadow: none;
 }
 
 .secondary-btn:hover {
-    background: var(--white);
-    color: var(--secondary-color);
-    transform: translateY(-3px);
+    background: var(--secondary-color);
+    color: var(--white);
+    transform: none;
 }
 
 .hero-image {
@@ -206,25 +218,26 @@ nav ul li a:hover {
 }
 
 .hero-image img {
-    max-width: 450px;
+    max-width: 100%;
     width: 100%;
     height: auto;
-    filter: drop-shadow(0 10px 30px rgba(99, 102, 241, 0.3));
+    filter: none;
     opacity: 1;
-    transition: all 0.3s ease;
+    transition: none;
     object-fit: contain;
-    margin-left: 40%;
+    margin-left: 0;
+    transform: none;
 }
 
 .hero-image img:hover {
-    filter: drop-shadow(0 15px 40px rgba(99, 102, 241, 0.4));
-    transform: translateY(-5px);
+    filter: none;
+    transform: none;
 }
 
 /* About section */
 #about {
     padding: 6rem 5%;
-    background: var(--white);
+    background: var(--light-bg);
 }
 
 .about-content {
@@ -232,20 +245,20 @@ nav ul li a:hover {
     gap: 4rem;
     max-width: 1200px;
     margin: 0 auto;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .about-content img {
-    width: 500px;
-    height: 600px;
-    border-radius: 2%;
+    width: 300px;
+    height: 400px;
+    border-radius: 0;
     object-fit: cover;
-    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    box-shadow: none;
+    transition: none;
 }
 
 .about-content img:hover {
-    transform: scale(1.05);
+    transform: none;
 }
 
 .about-text {
@@ -254,51 +267,152 @@ nav ul li a:hover {
 
 .skills {
     display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 2rem;
     margin-top: 2rem;
 }
 
 .skills span {
-    background: var(--primary-color);
-    color: var(--white);
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-size: 0.9rem;
-    transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
 .skills span i {
-    font-size: 1.2rem; /* Makes icons slightly larger than text */
+    font-size: 1rem;
+    color: var(--secondary-color);
+    min-width: 24px;
 }
 
-/* Optional: Add specific colors for each technology */
-.skills span:nth-child(1) i { color: #E44D26; } /* HTML5 color */
-.skills span:nth-child(2) i { color: #264DE4; } /* CSS3 color */
-.skills span:nth-child(3) i { color: #F7DF1E; } /* JavaScript color */
-.skills span:nth-child(4) i { color: #61DAFB; } /* React color */
-
-/* Hover effect */
-.skills span:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+/* Skill name and progress bar container */
+.skill-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
 }
 
-/* Optional: Add rotation animation for React icon */
-.skills span:nth-child(4) i {
-    animation: spin 4s linear infinite;
+.skill-name {
+    font-weight: 500;
+    color: var(--secondary-color);
+    min-width: 80px;
+    font-size: 0.9rem;
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.skill-bar-container {
+    flex: 1;
+    height: 2px;
+    background: var(--border-color);
+    position: relative;
+    border-radius: 0;
+}
+
+.skill-bar-fill {
+    height: 100%;
+    background: var(--secondary-color);
+    border-radius: 0;
+    position: relative;
+    transition: width 0.5s ease;
+}
+
+.skill-bar-fill::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.skill-percentage {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    font-weight: 500;
+    min-width: 30px;
+    text-align: right;
+}
+
+/* Experience section */
+#experience {
+    padding: 6rem 5%;
+    background: var(--light-bg);
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 2rem auto 0;
+}
+
+.experience-card {
+    background: var(--white);
+    border-radius: 0;
+    padding: 2rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 1.5rem;
+}
+
+.experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.exp-timeline {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.exp-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1.2rem;
+}
+
+.exp-content {
+    flex: 1;
+}
+
+.exp-content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 0.3rem;
+}
+
+.exp-company {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+
+.exp-year {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.exp-description {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
 /* Certifications section - Enhanced Design */
@@ -316,8 +430,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(245, 158, 11, 0.03) 0%, transparent 50%);
+    background: none;
     pointer-events: none;
 }
 
@@ -333,9 +446,9 @@ nav ul li a:hover {
 
 .cert-card {
     background: var(--white);
-    border-radius: 20px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     border: 1px solid var(--border-color);
@@ -347,16 +460,16 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     right: 0;
-    height: 5px;
-    background: var(--gradient-1);
+    height: 0;
+    background: none;
     transform: scaleX(0);
-    transition: transform 0.4s ease;
+    transition: none;
     transform-origin: left;
 }
 
 .cert-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 .cert-card:hover::before {
@@ -367,30 +480,21 @@ nav ul li a:hover {
     position: absolute;
     top: 20px;
     right: 20px;
-    width: 60px;
-    height: 60px;
-    background: var(--gradient-1);
-    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-color);
+    border-radius: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-    animation: float 3s ease-in-out infinite;
+    box-shadow: none;
+    animation: none;
     z-index: 2;
 }
 
 .cert-badge i {
     color: var(--white);
-    font-size: 1.8rem;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    font-size: 1.5rem;
 }
 
 .cert-content {
@@ -488,17 +592,17 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     gap: 0.8rem;
-    padding: 1rem 2rem;
-    background: var(--gradient-1);
+    padding: 0.9rem 1.8rem;
+    background: var(--secondary-color);
     color: var(--white);
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 0;
     font-weight: 600;
     font-size: 1rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: none;
 }
 
 .cert-btn::before {
@@ -508,7 +612,7 @@ nav ul li a:hover {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
     transition: left 0.5s ease;
 }
 
@@ -522,8 +626,19 @@ nav ul li a:hover {
 }
 
 .cert-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+    background: var(--primary-color);
+    transform: none;
+    box-shadow: none;
+}
+
+.cert-btn:hover i {
+    transform: none;
+}
+
+.cert-btn:active {
+    transform: none;
+    box-shadow: none;
+}
 }
 
 .cert-btn:hover i {
@@ -551,9 +666,9 @@ nav ul li a:hover {
 
 .project-card {
     background: var(--white);
-    border-radius: 20px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     position: relative;
@@ -565,16 +680,16 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: var(--gradient-1);
+    height: 0;
+    background: none;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s ease;
+    transition: none;
 }
 
 .project-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 .project-card:hover::before {
@@ -596,15 +711,15 @@ nav ul li a:hover {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: var(--gradient-1);
+    background: var(--secondary-color);
     color: var(--white);
-    padding: 0.5rem 1.2rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    box-shadow: none;
     z-index: 10;
 }
 
@@ -630,20 +745,20 @@ nav ul li a:hover {
 }
 
 .tech-tag {
-    padding: 0.4rem 1rem;
-    background: rgba(99, 102, 241, 0.1);
-    color: var(--primary-color);
-    border-radius: 15px;
+    padding: 0.4rem 0.8rem;
+    background: var(--light-bg);
+    color: var(--secondary-color);
+    border-radius: 0;
     font-size: 0.75rem;
-    font-weight: 600;
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    font-weight: 500;
+    border: 1px solid var(--border-color);
     transition: all 0.3s ease;
 }
 
 .tech-tag:hover {
-    background: var(--primary-color);
+    background: var(--secondary-color);
     color: var(--white);
-    transform: translateY(-2px);
+    transform: none;
 }
 
 .project-buttons {
@@ -658,36 +773,38 @@ nav ul li a:hover {
     justify-content: center;
     padding: 0.8rem 1.5rem;
     text-decoration: none;
-    border-radius: 10px;
+    border-radius: 0;
     font-weight: 600;
     font-size: 0.9rem;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
     flex: 1;
+    font-size: 0.85rem;
+    letter-spacing: 0.3px;
 }
 
 .btn-primary {
-    background: var(--primary-color);
+    background: var(--secondary-color);
     color: var(--white);
 }
 
 .btn-primary:hover {
-    background: var(--secondary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+    background: var(--primary-color);
+    transform: none;
+    box-shadow: none;
 }
 
 .btn-secondary {
     background: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-color);
+    background: var(--secondary-color);
     color: var(--white);
-    transform: translateY(-2px);
+    transform: none;
 }
 
 /* UI/UX Design Projects Section */
@@ -704,9 +821,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
-        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 40%);
+    background: none;
     pointer-events: none;
 }
 
@@ -722,9 +837,9 @@ nav ul li a:hover {
 
 .ux-project-card {
     background: var(--white);
-    border-radius: 20px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid var(--border-color);
     position: relative;
@@ -736,16 +851,16 @@ nav ul li a:hover {
     top: 0;
     left: 0;
     right: 0;
-    height: 4px;
-    background: var(--gradient-1);
+    height: 0;
+    background: none;
     transform: scaleX(0);
     transform-origin: left;
-    transition: transform 0.4s ease;
+    transition: none;
 }
 
 .ux-project-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
 }
 
 .ux-project-card:hover::after {
@@ -773,7 +888,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(118, 75, 162, 0.95));
+    background: rgba(0, 0, 0, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -823,13 +938,13 @@ nav ul li a:hover {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(99, 102, 241, 0.05));
-    border-radius: 20px;
-    color: var(--primary-color);
+    background: var(--light-bg);
+    border-radius: 0;
+    color: var(--secondary-color);
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 1rem;
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    border: 1px solid var(--border-color);
 }
 
 .ux-project-category i {
@@ -859,10 +974,10 @@ nav ul li a:hover {
 }
 
 .tag {
-    padding: 0.4rem 1rem;
+    padding: 0.4rem 0.8rem;
     background: var(--light-bg);
     color: var(--text-color);
-    border-radius: 15px;
+    border-radius: 0;
     font-size: 0.8rem;
     font-weight: 500;
     border: 1px solid var(--border-color);
@@ -870,10 +985,10 @@ nav ul li a:hover {
 }
 
 .tag:hover {
-    background: rgba(99, 102, 241, 0.1);
-    border-color: var(--primary-color);
-    color: var(--primary-color);
-    transform: translateY(-2px);
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--white);
+    transform: none;
 }
 
 /* Figma Button */
@@ -883,14 +998,14 @@ nav ul li a:hover {
     justify-content: center;
     gap: 0.7rem;
     padding: 0.9rem 1.8rem;
-    background: var(--white);
-    color: var(--primary-color);
+    background: transparent;
+    color: var(--secondary-color);
     text-decoration: none;
-    border-radius: 50px;
+    border-radius: 0;
     font-weight: 600;
     font-size: 0.95rem;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid var(--primary-color);
+    border: 1px solid var(--secondary-color);
     position: relative;
     overflow: hidden;
 }
@@ -902,7 +1017,7 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: var(--gradient-1);
+    background: var(--secondary-color);
     transform: translateY(100%);
     transition: transform 0.3s ease;
     z-index: -1;
@@ -914,22 +1029,22 @@ nav ul li a:hover {
 
 .ux-btn:hover {
     color: var(--white);
-    border-color: transparent;
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+    border-color: var(--secondary-color);
+    transform: none;
+    box-shadow: none;
 }
 
 .ux-btn i {
-    font-size: 1.1rem;
+    font-size: 1rem;
     transition: transform 0.3s ease;
 }
 
 .ux-btn:hover i {
-    transform: scale(1.1) rotate(5deg);
+    transform: none;
 }
 
 .ux-btn:active {
-    transform: translateY(-1px);
+    transform: none;
 }
 
 /* Contact section */
@@ -948,10 +1063,10 @@ nav ul li a:hover {
 }
 
 .contact-content img {
-    width: 400px;
+    width: 300px;
     height: auto;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .contact-info {
@@ -963,9 +1078,10 @@ nav ul li a:hover {
 
 .reach-out, .social-connect {
     background: var(--white);
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    padding: 2rem;
+    border-radius: 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
 }
 
 .reach-out h3, .social-connect h3 {
@@ -996,26 +1112,22 @@ nav ul li a:hover {
 }
 
 .social-icons a {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     color: var(--secondary-color);
     transition: all 0.3s ease;
 }
 
 .social-icons a:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 /* Specific colors for social media icons */
 .social-icons a:nth-child(1) { /* Facebook */
-    color: #1877f2;
+    color: #000;
 }
 
-.social-icons a:nth-child(2) { /* Instagram */
-    color: #e4405f;
-}
-
-.social-icons a:nth-child(3) { /* LinkedIn */
-    color: #0077b5;
+.social-icons a:nth-child(2) { /* LinkedIn */
+    color: #000;
 }
 
 /* Contact Form Styling */
@@ -1028,15 +1140,16 @@ form {
 
 form input, form textarea {
     padding: 1rem;
-    border: 2px solid #eee;
-    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 0;
     font-size: 1rem;
     transition: border-color 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
 
 form input:focus, form textarea:focus {
     outline: none;
-    border-color: var(--primary-color);
+    border-color: var(--secondary-color);
 }
 
 form textarea {
@@ -1050,23 +1163,27 @@ footer {
     color: var(--white);
     text-align: center;
     padding: 2rem;
+    font-size: 0.9rem;
+    font-weight: 400;
 }
 
 /* Section headers */
 h2 {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     margin-bottom: 3rem;
     color: var(--secondary-color);
     position: relative;
+    font-weight: 600;
+    letter-spacing: -0.3px;
 }
 
 h2::after {
     content: '';
-    display: block;
+    display: none;
     width: 50px;
     height: 3px;
-    background: var(--primary-color);
+    background: var(--secondary-color);
     margin: 0.5rem auto;
 }
 
@@ -1345,7 +1462,7 @@ h2::after {
 
     nav ul {
         justify-content: center;
-        gap: 1.5rem;
+        gap: 1rem;
     }
 
     .hero {
@@ -1359,11 +1476,11 @@ h2::after {
     }
 
     .hero-text h1 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .hero-text p {
-        font-size: 1.2rem;
+        font-size: 0.95rem;
     }
 
     .skills {
@@ -1371,17 +1488,22 @@ h2::after {
     }
 
     .hero-image img {
-        max-width: 350px;
+        max-width: 100%;
     }
 
     nav ul li a {
-        font-size: 1rem;
+        font-size: 0.85rem;
         padding: 6px 12px;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
     }
 
     .certifications-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .cert-card {
@@ -1390,30 +1512,11 @@ h2::after {
 
     .ux-project-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
     }
 
     .ux-project-image {
         height: 240px;
-    }
-}
-
-@media (max-width: 968px) {
-    .hero-content {
-        flex-direction: column-reverse;
-        text-align: center;
-    }
-
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-    }
-
-    .hero-image img {
-        max-width: 400px;
     }
 
     .contact-content {
@@ -1424,7 +1527,41 @@ h2::after {
 
     .contact-content img {
         width: 100%;
-        max-width: 400px;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 968px) {
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image img {
+        max-width: 100%;
+    }
+
+    .contact-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .contact-content img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -1434,25 +1571,25 @@ h2::after {
     }
 
     nav ul {
-        gap: 1rem;
+        gap: 0.8rem;
     }
 
     nav ul li a {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         padding: 5px 10px;
     }
 
     .about-content img {
-        width: 200px;
+        width: 150px;
         height: 200px;
     }
 
     .hero-text h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     .hero-text p {
-        font-size: 1rem;
+        font-size: 0.9rem;
     }
 
     .hero-buttons {
@@ -1460,7 +1597,7 @@ h2::after {
     }
 
     .hero-image img {
-        max-width: 280px;
+        max-width: 200px;
     }
 
     .social-icons {
@@ -1480,11 +1617,25 @@ h2::after {
     }
 
     .cert-title {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
 
     .cert-btn {
         width: 100%;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .exp-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .exp-content h3 {
+        font-size: 1rem;
     }
 }
 
@@ -1502,7 +1653,7 @@ nav ul li a.active {
 /* Add these typing animation styles */
 .typing {
     color: var(--accent-color);
-    border-right: 3px solid transparent;
-    padding-right: 5px;
-    animation: blink 0.7s steps(1) infinite;
+    border-right: none;
+    padding-right: 0;
+    animation: none;
 }
