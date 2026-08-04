@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,17 +16,15 @@
         .click-to-view {
             display: block;
             margin-top: 1.2rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.9rem;
-            letter-spacing: 0.3px;
         }
-
+        
         .click-to-view:hover {
-            color: var(--primary-color);
-            transform: none;
+            color: var(--accent-color);
+            transform: translateX(5px);
         }
     </style>
 </head>
@@ -43,7 +41,7 @@
                     <span class="hover-animation"></span>
                 </a></li>
                 <li><a href="#projects">
-                    Portfolio
+                    Projects
                     <span class="hover-animation"></span>
                 </a></li>
                 <li><a href="#contact">
@@ -76,157 +74,16 @@
         <section id="about">
             <h2>About Me</h2>
             <div class="about-content">
-                <img src="About_me.jpg" alt="Profile Picture">
+                <img src="stolenpic.jpg" alt="Profile Picture">
                 <div class="about-text">
-                    <p>Hi! I'm Elton Bernil, a fresh BS Information 
-                            Systems graduate from Cebu Technological 
-                            University in Cebu, Philippines.
-
-                            I build web applications and have real hands-on 
-                            experience from my capstone project and Internship. 
-                            As Lead Developer, I built an IoT-based Smart 
-                            Food Waste Management System — connecting 
-                            physical ESP32 sensors to a live Firebase 
-                            dashboard with real-time analytics and 
-                            automated alerts.
-
-                            I completed my 3-month Internship where I developed full-stack web 
-                            features using ASP.NET MVC, C#, SQL, and Git 
-                            in a professional team environment.
-
-                            I also hold two Google UX Design certifications 
-                            from Coursera and have practical experience 
-                            with Figma for wireframing and prototyping.
-
-                            I am currently available for remote web 
-                            development, QA testing, and admin support 
-                            roles. I am honest about my skill level, 
-                            a fast learner, and committed to delivering 
-                            quality work.</p>
+                    <p>Hi!, Elton Bernil, an aspiring web developer passionate about creating functional and user-friendly digital experiences. As a dedicated student, I am continuously learning and exploring web technologies like HTML, CSS, JavaScript, MySQL and Figma UI/UX design. I enjoy  designing intuitive interfaces, and building projects that enhance user interaction. While I may not have professional experience yet, I am eager to apply my skills and grow in the field. I'm excited to take on new challenges and bring creative ideas to life!</p>
                     <div class="skills">
-                        <span>
-                            <i class="fa-brands fa-html5"></i>
-                            <div class="skill-label">
-                                <div class="skill-name">HTML & CSS</div>
-                                <div class="skill-bar-container">
-                                    <div class="skill-bar-fill" style="width: 90%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-percentage">90%</div>
-                        </span>
-                        <span>
-                            <i class="fa-brands fa-js"></i>
-                            <div class="skill-label">
-                                <div class="skill-name">JavaScript</div>
-                                <div class="skill-bar-container">
-                                    <div class="skill-bar-fill" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="skill-percentage">70%</div>
-                        </span>
-                        <span>
-                        <i class="fa-brands fa-php"></i>
-                        <div class="skill-label">
-                            <div class="skill-name">PHP</div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar-fill" style="width: 50%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-percentage">50%</div>
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-fire"></i>
-                        <div class="skill-label">
-                            <div class="skill-name">Firebase</div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar-fill" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-percentage">75%</div>
-                    </span>
-
-                    <span>
-                        <i class="fa-solid fa-database"></i>
-                        <div class="skill-label">
-                            <div class="skill-name">MySQL</div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar-fill" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-percentage">80%</div>
-                    </span>
-
-                    <span>
-                        <i class="fa-brands fa-figma"></i>
-                        <div class="skill-label">
-                            <div class="skill-name">Figma</div>
-                            <div class="skill-bar-container">
-                                <div class="skill-bar-fill" style="width: 75%"></div>
-                            </div>
-                        </div>
-                        <div class="skill-percentage">75%</div>
-                    </span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <div class="experience-grid">
-                <div class="experience-card">
-                    <div class="exp-timeline">
-                        <div class="exp-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                    </div>
-                    <div class="exp-content">
-                        <h3>Web Developer</h3>
-                        <p class="exp-year">2023 - Present</p>
-                        <p class="exp-description">Building responsive web applications using HTML, CSS, JavaScript, and Firebase. Creating user-friendly interfaces and implementing modern web solutions.</p>
-                    </div>
-                </div>
-
-                <div class="experience-card">
-                    <div class="exp-timeline">
-                        <div class="exp-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                    </div>
-                    <div class="exp-content">
-                        <h3>UI/UX Designer</h3>
-                         <div class="exp-timeline">
-                    </div>
-                        <p class="exp-year">2022 - Present</p>
-                        <p class="exp-description">Designing digital experiences with Figma. Creating brand designs, product mockups, and advertising materials. Focused on minimalist and modern aesthetics.</p>
-                    </div>
-                </div>
-
-                <div class="experience-card">
-                    <div class="exp-timeline">
-                        <div class="exp-icon">
-                            <i class="fas fa-laptop"></i>
-                        </div>
-                    </div>
-                    <div class="exp-content">
-                        <h3>Lead Tech Developer (Capstone Project)</h3>
-                        <p class="exp-company">CTU Main Campus</p>
-                        <p class="exp-year">2024 - 2025</p>
-                        <p class="exp-description">Developing Smart Food Waste Management System - IoT web application with real-time monitoring, analytics dashboard, and admin panel using Firebase and Arduino.</p>
-                    </div>
-                </div>
-
-                <div class="experience-card">
-                    <div class="exp-timeline">
-                        <div class="exp-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                    </div>
-                    <div class="exp-content">
-                        <h3>Information System Student</h3>
-                        <p class="exp-company">Cebu Technological University</p>
-                        <p class="exp-year">2021 - Present</p>
-                        <p class="exp-description">Bachelor of Science in Information Systems. Focused on web development, database management, and UI/UX design. Actively learning latest web technologies and best practices.</p>
+                        <span><i class="fa-brands fa-html5"></i> HTML</span>
+                        <span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+                        <span><i class="fa-brands fa-js"></i> JavaScript</span>
+                        <span><i class="fa-solid fa-database"></i> MySQL</span>
+                        <span><i class="fa-brands fa-figma"></i> Figma</span>
+                        
                     </div>
                 </div>
             </div>
@@ -303,12 +160,15 @@
                         <span class="tech-tag">Firebase</span>
                         <span class="tech-tag">Arduino</span>
                     </div>
+                    <div class="project-buttons">
+                        <a href="https://smart-bin-app-d9ef0.web.app" class="btn btn-primary">View Project (Cannot be viewed anymore since not hosted)</a>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="ux-projects">
-            <h2>Personal UI/UX Design Projects</h2>
+            <h2>Example UI/UX Design Projects</h2>
             <div class="ux-project-grid">
                 <div class="ux-project-card">
                     <div class="ux-project-image">
@@ -326,9 +186,7 @@
                             <span>Brand Design</span>
                         </div>
                         <h3>Porsche - Luxury Automotive</h3>
-                        <p>A sleek and dynamic poster design showcasing Porsche's iconic brand identity with bold red gradients and premium automotive imagery. Emphasizing speed, luxury, and timeless elegance.</p><br>
-                          <h4>Design Process</h4>
-                        <p>I chose bold red gradients to reflect Porsche's energy and performance identity. Typography was kept minimal and uppercase to convey authority and prestige. The layout uses strong diagonal lines to suggest motion and speed — a visual language consistent with luxury automotive branding.</p>
+                        <p>A sleek and dynamic poster design showcasing Porsche's iconic brand identity with bold red gradients and premium automotive imagery. Emphasizing speed, luxury, and timeless elegance.</p>
                         <div class="ux-project-tags">
                             <span class="tag">Visual Design</span>
                             <span class="tag">Branding</span>
@@ -354,10 +212,7 @@
                             <span>Product Design</span>
                         </div>
                         <h3>ASICS - Athletic Footwear</h3>
-                        <p>Minimalist monochromatic design highlighting ASICS athletic footwear with sophisticated grayscale aesthetics. Focuses on product details, sustainable materials, and modern versatility.</p><br>
-                         <h4>Design Process</h4>
-                        <p>I used a monochromatic grayscale palette to let the product itself become the focal point without visual distraction. The goal was to communicate that the shoe's design speaks for itself — a common approach in premium athletic branding. Clean whitespace and precise product placement were deliberate choices to create a high-end retail feel.</p>
-
+                        <p>Minimalist monochromatic design highlighting ASICS athletic footwear with sophisticated grayscale aesthetics. Focuses on product details, sustainable materials, and modern versatility.</p>
                         <div class="ux-project-tags">
                             <span class="tag">Product Design</span>
                             <span class="tag">Minimalism</span>
@@ -383,10 +238,7 @@
                             <span>Advertising Design</span>
                         </div>
                         <h3>Citrus Rush - Fresh Orange Juice</h3>
-                        <p>Vibrant and energetic advertising design featuring bold orange aesthetics with dynamic product visualization. Creates a refreshing, natural, and health-conscious brand appeal.</p><br>
-                         <h4>Design Process</h4>
-                        <p>Orange was the natural primary color choice to reinforce the product's freshness and natural origin — color psychology shows warm oranges trigger appetite and energy associations. I positioned the product at center-frame with splashing liquid elements to create a sense of movement and vitality. The overall composition was designed to work as both a digital ad and a physical promotional material.</p>
-
+                        <p>Vibrant and energetic advertising design featuring bold orange aesthetics with dynamic product visualization. Creates a refreshing, natural, and health-conscious brand appeal.</p>
                         <div class="ux-project-tags">
                             <span class="tag">Advertising</span>
                             <span class="tag">3D Design</span>
@@ -418,8 +270,6 @@
                         <div class="social-icons">
                             <a href="https://www.facebook.com/bernilelton" target="_blank"><i class="fab fa-facebook"></i></a>
                             <a href="https://www.linkedin.com/in/bernil-elton-dwinn-p-3a50903a8/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                            <a href="https://github.com/callmeEltonBernil" target="_blank"><i class="fab fa-github"></i></a>
-
                         </div>
                     </div>
 
@@ -430,7 +280,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 [Elton Bernil]. All rights reserved.</p>
+        <p>&copy; 2024 [Elton Bernil]. All rights reserved.</p>
     </footer>
 
     <!-- Lightbox Modal for Full Image View -->
@@ -506,7 +356,7 @@
 
         // Typing Animation
         const typingElement = document.querySelector('.typing');
-        const phrases = ["Elton Bernil", "a Junior Web Developer", "a UI/UX Designer"];
+        const phrases = ["Elton Bernil", "An Aspiring Web Developer"];
         let phraseIndex = 0, charIndex = 0, isDeleting = false;
         
         function typeText() {
