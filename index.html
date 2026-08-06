@@ -12,20 +12,21 @@
             cursor: pointer;
         }
         
-        /* Style for click-to-view text */
+        /* Style for click-to-view text — muted by default, brightens only on card hover */
         .click-to-view {
             display: block;
             margin-top: 1.2rem;
-            color: var(--secondary-color);
+            color: rgba(255,255,255,0.56); /* muted default */
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: color 220ms ease, transform 220ms ease;
             font-size: 0.9rem;
             letter-spacing: 0.3px;
         }
 
-        .click-to-view:hover {
-            color: var(--primary-color);
+        /* Only brighten when the whole card is hovered */
+        .ux-project-card:hover .click-to-view {
+            color: rgba(255,255,255,0.98);
             transform: none;
         }
     </style>
@@ -309,8 +310,17 @@
 
         <section id="ux-projects">
             <h2>Personal UI/UX Design Projects</h2>
-            <div class="ux-project-grid">
-                <div class="ux-project-card">
+            <div class="ux-project-carousel">
+                <div class="ux-project-carousel-controls">
+                    <div class="ux-project-indicator" id="ux-indicator">1 / 5</div>
+                    <div class="ux-carousel-buttons">
+                        <button class="ux-carousel-btn" id="ux-prev" aria-label="Previous project"><i class="fas fa-chevron-left"></i></button>
+                        <button class="ux-carousel-btn" id="ux-next" aria-label="Next project"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                </div>
+                <div class="ux-project-view">
+                    <div class="ux-project-grid" id="ux-project-grid">
+                    <div class="ux-project-card">
                     <div class="ux-project-image">
                         <img src="porsche.png" alt="Porsche Brand Design">
                         <div class="ux-overlay">
@@ -393,6 +403,66 @@
                             <span class="tag">Color Theory</span>
                         </div>
                         <span class="click-to-view">Click to see the photo</span>
+                    </div>
+                </div>
+
+                <div class="ux-project-card">
+                    <div class="ux-project-image">
+                        <img src="A4 - 1.png" alt="Oreo Chocolate Frappe Poster Design">
+                        <div class="ux-overlay">
+                            <div class="ux-overlay-content">
+                                <i class="fab fa-figma"></i>
+                                <span>View Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ux-project-info">
+                        <div class="ux-project-category">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Advertising Design</span>
+                        </div>
+                        <h3>Oreo Chocolate Frappe - Indulge in Chocolate Bliss</h3>
+                        <p>Rich, indulgent advertising poster built around dripping chocolate and layered dessert textures. Combines bold serif typography with warm caramel-brown tones to create a premium, craveable beverage campaign.</p><br>
+                        <h4>Design Process</h4>
+                        <p>A warm caramel-brown base was chosen to evoke chocolate and coffee associations while keeping enough contrast for white typography to pop. I added a dripping chocolate motif across the top edge to visually reinforce "indulgence" before the reader even reaches the product name. The Oreo frappe was placed dead-center as the focal point, framed by scattered cookie halves to add texture and depth. A soft circular badge was used for the price callout so it reads instantly without competing with the headline. Serif display type was used for the headline to give the drink a slightly premium, dessert-menu feel rather than a fast-food one.</p>
+
+                        <div class="ux-project-tags">
+                            <span class="tag">Advertising</span>
+                            <span class="tag">Food & Beverage</span>
+                            <span class="tag">Color Theory</span>
+                        </div>
+                        <span class="click-to-view">Click to see the photo</span>
+                    </div>
+                </div>
+
+                <div class="ux-project-card">
+                    <div class="ux-project-image">
+                        <img src="A6 - 1.png" alt="Pure Black Coffee Poster Design">
+                        <div class="ux-overlay">
+                            <div class="ux-overlay-content">
+                                <i class="fab fa-figma"></i>
+                                <span>View Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ux-project-info">
+                        <div class="ux-project-category">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Advertising Design</span>
+                        </div>
+                        <h3>Pure Black - Strong. Bold. Uncompromising.</h3>
+                        <p>Minimalist, high-contrast coffee advertisement built on a dark gradient background with scattered coffee bean elements. Communicates strength and intensity through stark typography and a distraction-free product presentation.</p><br>
+                        <h4>Design Process</h4>
+                        <p>A deep black-to-brown gradient was used to mirror the product itself — pure, unfiltered black coffee — while keeping the design from feeling flat or one-dimensional. Coffee beans were scattered across the top third to add organic texture without cluttering the headline space. A bold, condensed sans-serif was chosen for "PURE BLACK" to communicate strength and directness, paired with a lighter tagline weight for contrast in emphasis. The cup mockup was placed slightly off-center with the price badge overlapping it, creating a natural focal triangle between the headline, product, and price. The overall palette was kept monochromatic to let the product photography carry the visual weight.</p>
+
+                        <div class="ux-project-tags">
+                            <span class="tag">Advertising</span>
+                            <span class="tag">Minimalism</span>
+                            <span class="tag">Color Theory</span>
+                        </div>
+                        <span class="click-to-view">Click to see the photo</span>
+                    </div>
+                </div>
                     </div>
                 </div>
             </div>
@@ -535,6 +605,32 @@
         
         window.addEventListener('load', typeText);
 
+        // ===== UX PROJECT CAROUSEL =====
+        const uxProjectGrid = document.getElementById('ux-project-grid');
+        const uxPrevBtn = document.getElementById('ux-prev');
+        const uxNextBtn = document.getElementById('ux-next');
+        const uxIndicator = document.getElementById('ux-indicator');
+        const uxCards = Array.from(document.querySelectorAll('#ux-project-grid .ux-project-card'));
+        let uxCurrentIndex = 0;
+
+        function updateUxCarousel() {
+            uxProjectGrid.style.transform = `translateX(-${uxCurrentIndex * 100}%)`;
+            uxIndicator.textContent = `${uxCurrentIndex + 1} / ${uxCards.length}`;
+        }
+
+        uxPrevBtn.addEventListener('click', () => {
+            uxCurrentIndex = (uxCurrentIndex - 1 + uxCards.length) % uxCards.length;
+            updateUxCarousel();
+        });
+
+        uxNextBtn.addEventListener('click', () => {
+            uxCurrentIndex = (uxCurrentIndex + 1) % uxCards.length;
+            updateUxCarousel();
+        });
+
+        window.addEventListener('resize', updateUxCarousel);
+        updateUxCarousel();
+
         // ===== LIGHTBOX =====
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
@@ -600,7 +696,22 @@
                 title: img.closest('.ux-project-card').querySelector('.ux-project-info h3').textContent
             });
 
+            // allow clicking the image itself
             img.addEventListener('click', () => openLightbox(index));
+
+            // also allow clicking the overlay to open the lightbox (overlay covers image on hover)
+            const overlay = img.closest('.ux-project-image').querySelector('.ux-overlay');
+            if (overlay) {
+                // attach click only to the overlay content (center area) so
+                // scrolling the overlay won't immediately open the lightbox
+                const overlayContent = overlay.querySelector('.ux-overlay-content');
+                if (overlayContent) {
+                    overlayContent.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        openLightbox(index);
+                    });
+                }
+            }
         });
 
         projectImages.forEach((img, index) => {
@@ -616,6 +727,20 @@
         // Click to view spans
         document.querySelectorAll('.click-to-view').forEach((span, idx) => {
             span.addEventListener('click', () => openLightbox(idx));
+        });
+
+        // Toggle gradient hints based on scroll position inside the info panel
+        document.querySelectorAll('.ux-project-info').forEach(panel => {
+            function updateHints() {
+                const scrollTop = panel.scrollTop;
+                const maxScroll = panel.scrollHeight - panel.clientHeight;
+                if (scrollTop <= 2) panel.classList.add('no-top-hint'); else panel.classList.remove('no-top-hint');
+                if (scrollTop >= maxScroll - 2) panel.classList.add('no-bottom-hint'); else panel.classList.remove('no-bottom-hint');
+            }
+
+            // initialize and attach
+            updateHints();
+            panel.addEventListener('scroll', updateHints);
         });
 
         // Controls

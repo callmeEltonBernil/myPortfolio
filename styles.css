@@ -5,6 +5,29 @@
     box-sizing: border-box;
 }
 
+/* Forcefully remove any visible backgrounds on tags/categories/buttons */
+/* Specific and !important so this wins over other rules during debugging */
+.ux-project-info .tag,
+.ux-project-info .ux-project-category,
+.ux-project-info .ux-btn,
+.ux-project-info .click-to-view,
+.tag,
+.ux-project-category {
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
+/* Also remove hover backgrounds */
+.ux-project-info .tag:hover,
+.ux-project-info .ux-project-category:hover,
+.ux-project-card:hover .ux-project-info .tag,
+.ux-project-card:hover .ux-project-info .ux-project-category,
+.tag:hover,
+.ux-project-category:hover {
+    background: transparent !important;
+    border-color: transparent !important;
+}
+
 :root {
     /* Minimalist Monochromatic Color Palette */
     --primary-color: #000000;        /* Black - Primary text & headers */
@@ -639,7 +662,6 @@ nav ul li a:hover {
     transform: none;
     box-shadow: none;
 }
-}
 
 .cert-btn:hover i {
     transform: translateX(3px);
@@ -825,24 +847,80 @@ nav ul li a:hover {
     pointer-events: none;
 }
 
-.ux-project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 2rem auto 0;
+.ux-project-carousel {
     position: relative;
-    z-index: 1;
+    max-width: 900px;
+    margin: 2rem auto 0;
+}
+
+.ux-project-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.ux-project-indicator {
+    color: var(--secondary-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.ux-carousel-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.ux-carousel-btn {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    color: var(--secondary-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.ux-carousel-btn:hover {
+    background: var(--secondary-color);
+    color: var(--white);
+    border-color: var(--secondary-color);
+}
+
+.ux-project-view {
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+}
+
+.ux-project-grid {
+    display: flex;
+    transition: transform 0.6s ease;
+    width: 100%;
+    align-items: stretch;
 }
 
 .ux-project-card {
     background: var(--white);
     border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: none;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid var(--border-color);
+    border: 0;
     position: relative;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Make card stack vertically so info panel sits below image */
+.ux-project-card {
+    display: flex;
+    flex-direction: column;
 }
 
 .ux-project-card::after {
@@ -870,7 +948,7 @@ nav ul li a:hover {
 .ux-project-image {
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 420px; /* taller preview for better composition */
     overflow: hidden;
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
@@ -879,7 +957,19 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    object-position: center center;
+    transition: transform 420ms cubic-bezier(0.2,0,0,1), filter 420ms ease;
+    filter: contrast(1.06) saturate(1.06);
+}
+
+.ux-project-image::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 8px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.06));
 }
 
 .ux-overlay {
@@ -888,12 +978,14 @@ nav ul li a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0, 0, 0, 0.18);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: all 0.4s ease;
+    pointer-events: none; /* allow clicks to pass through until overlay is visible */
+    cursor: pointer;
 }
 
 .ux-overlay-content {
@@ -904,6 +996,8 @@ nav ul li a:hover {
     transform: translateY(20px);
     transition: all 0.4s ease 0.1s;
 }
+
+.ux-overlay-content { pointer-events: auto; display: none; }
 
 .ux-overlay-content i {
     font-size: 3rem;
@@ -918,19 +1012,255 @@ nav ul li a:hover {
 }
 
 .ux-project-card:hover .ux-overlay {
-    opacity: 1;
+    opacity: 0.06; /* very subtle dim so preview image stays vivid */
+}
+
+/* Scale image slightly on hover for a clean effect */
+.ux-project-card:hover .ux-project-image img {
+    transform: scale(1.03);
+    filter: brightness(1);
 }
 
 .ux-project-card:hover .ux-overlay-content {
     transform: translateY(0);
 }
 
-.ux-project-card:hover .ux-project-image img {
-    transform: scale(1.1);
+.ux-project-card:hover .ux-overlay-content {
+    transform: translateY(0);
+    display: flex;
 }
 
+/* Improve text contrast in the expanding info panel */
 .ux-project-info {
-    padding: 2rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.8) 100%);
+}
+
+.ux-project-card .ux-project-info h3 {
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1.45rem;
+}
+
+.ux-project-card .ux-project-info p,
+.ux-project-card .ux-project-info h4 {
+    color: rgba(255,255,255,0.92);
+}
+
+.ux-project-card .ux-project-info .tag,
+.ux-project-card .ux-project-info .ux-project-category {
+    background: transparent;
+    color: rgba(255,255,255,0.48); /* muted by default */
+    border-color: rgba(255,255,255,0.04);
+}
+
+/* Muted default for buttons and click-to-view inside the panel */
+.ux-project-info .ux-btn,
+.ux-project-info .click-to-view {
+    color: rgba(255,255,255,0.52);
+    background: transparent;
+    border-color: rgba(255,255,255,0.04);
+    opacity: 0.95;
+}
+
+/* Make tags, category and buttons transition to a lighter gray-white on hover */
+.ux-project-info .tag,
+.ux-project-info .ux-project-category,
+.ux-project-info .ux-btn,
+.ux-project-info .click-to-view {
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease, transform 200ms ease, opacity 200ms ease;
+    will-change: background, color, transform, opacity;
+}
+
+.ux-project-info .tag:hover,
+.ux-project-info .ux-project-category:hover {
+    background: rgba(255,255,255,0.16);
+    color: rgba(255,255,255,0.98);
+    border-color: rgba(255,255,255,0.12);
+}
+
+.ux-project-card:hover .ux-project-info .tag,
+.ux-project-card:hover .ux-project-info .ux-project-category {
+    background: rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.98);
+    border-color: rgba(255,255,255,0.12);
+}
+
+.ux-project-card:hover .ux-project-info .ux-btn,
+.ux-project-card:hover .ux-project-info .click-to-view {
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.98);
+    border-color: rgba(255,255,255,0.14);
+}
+
+/* Ensure category icon stays visible */
+.ux-project-info .ux-project-category i {
+    color: rgba(255,255,255,0.85);
+}
+
+
+/* Bottom slide-up info panel */
+.ux-project-info {
+    /* flow layout below the image */
+    position: relative;
+    padding: 0 1.25rem;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.85) 100%);
+    color: var(--white);
+    display: block;
+    transform: none;
+    /* start collapsed and expand on hover */
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 420ms cubic-bezier(0.2,0,0,1), padding 320ms ease;
+}
+
+/* Subtle gradient hints to indicate more content (scroll affordance) */
+.ux-project-info::before,
+.ux-project-info::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 28px;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.ux-project-info::before {
+    top: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0));
+}
+
+.ux-project-info::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0));
+}
+
+/* Hide top gradient when scrolled to top, hide bottom gradient when scrolled to bottom via JS class toggles */
+.ux-project-info.no-top-hint::before { display: none; }
+.ux-project-info.no-bottom-hint::after { display: none; }
+
+/* Custom thin scrollbar for modern browsers */
+.ux-project-info::-webkit-scrollbar {
+    width: 8px;
+}
+.ux-project-info::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.14);
+    border-radius: 999px;
+}
+.ux-project-info::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ux-project-card:hover .ux-project-info,
+.ux-project-card:focus-within .ux-project-info {
+    /* expand panel below the photo */
+    max-height: 420px; /* enough for content; will clip if larger */
+    padding: 1.25rem 1.25rem 1.5rem;
+    overflow: auto;
+}
+
+/* Make expanded panel darker and more solid to increase legibility */
+.ux-project-card:hover .ux-project-info {
+    background: rgba(0,0,0,0.94);
+    box-shadow: inset 0 6px 18px rgba(0,0,0,0.35);
+    border-top: 1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+}
+
+.ux-project-info h3,
+.ux-project-info p,
+.ux-project-info h4,
+.ux-project-info .ux-project-tags,
+.ux-project-info .click-to-view {
+    color: var(--white);
+}
+
+/* Individual element fade + slide animation (staggered) */
+.ux-project-info h3,
+.ux-project-info p,
+.ux-project-info h4,
+.ux-project-info .ux-project-tags,
+.ux-project-info .click-to-view {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 420ms cubic-bezier(0.2,0,0,1), transform 420ms cubic-bezier(0.2,0,0,1);
+}
+
+.ux-project-card:hover .ux-project-info h3 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 120ms;
+}
+.ux-project-card:hover .ux-project-info p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 220ms;
+}
+.ux-project-card:hover .ux-project-info h4 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 320ms;
+}
+.ux-project-card:hover .ux-project-info .ux-project-tags {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 420ms;
+}
+.ux-project-card:hover .ux-project-info .click-to-view {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 500ms;
+}
+
+.ux-project-info h3 {
+    margin-bottom: 0.7rem;
+}
+
+.ux-project-info p {
+    margin-bottom: 0.8rem;
+}
+
+.ux-project-info .ux-project-category {
+    background: transparent;
+    border-color: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 1rem;
+    transition: background 220ms ease, border-color 220ms ease, color 220ms ease;
+}
+
+.ux-project-info .tag {
+    background: transparent;
+    color: rgba(255,255,255,0.78);
+    border-color: rgba(255,255,255,0.06);
+    transition: background 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.ux-project-info .click-to-view {
+    margin-top: 0.6rem;
+}
+
+/* Hover-only backgrounds for info-panel buttons/tags */
+.ux-project-info .ux-project-category:hover,
+.ux-project-info .tag:hover,
+.ux-project-card:hover .ux-project-info .ux-project-category,
+.ux-project-card:hover .ux-project-info .tag {
+    background: rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.12);
+    color: var(--white);
+}
+
+/* removed final override block per user request */
+
+@media (max-width: 900px) {
+    .ux-project-carousel-controls {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ux-project-carousel-buttons {
+        width: 100%;
+        justify-content: flex-end;
+    }
 }
 
 .ux-project-category {
@@ -938,7 +1268,7 @@ nav ul li a:hover {
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
-    background: var(--light-bg);
+    background: transparent;
     border-radius: 0;
     color: var(--secondary-color);
     font-size: 0.85rem;
@@ -975,7 +1305,7 @@ nav ul li a:hover {
 
 .tag {
     padding: 0.4rem 0.8rem;
-    background: var(--light-bg);
+    background: transparent;
     color: var(--text-color);
     border-radius: 0;
     font-size: 0.8rem;
@@ -990,6 +1320,8 @@ nav ul li a:hover {
     color: var(--white);
     transform: none;
 }
+
+/* (removed) final override to ensure these elements are muted until card hover */
 
 /* Figma Button */
 .ux-btn {
